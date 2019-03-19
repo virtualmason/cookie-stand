@@ -8,8 +8,7 @@ function pikePlace (locationName, minCustomersPerHour,maxCustomersPerHour,avgCoo
   this.avgCookiesPerSale = avgCookiesPerSale,
   this.customersEachHour = [],
   this.cookiesEachHour = [],
-  this.totalDailyCookies = 0,
-  this.time = ['6am', '7am']
+  this.totalDailyCookies = 0
 }
 
 pikePlace.prototype.calcCustomersEachHour = function() {
@@ -32,82 +31,46 @@ pikePlace.prototype.calcTotalCookies = function() {
       for(var i = 0; i < this.cookiesEachHour.length; i++){
         this.totalDailyCookies += this.cookiesEachHour[i];
       }
+      
     }
 
  pikePlace.prototype.render = function() { 
       this.calcCustomersEachHour();
       this.calcCookiesEachHour();
       this.calcTotalCookies();
+       
+      var table = document.createElement('table');
+      var tr = document.createElement('tr');
+      var th = document.createElement('th')
+      ////////////
+   var table = document.createElement("table");
+  table.setAttribute("id", "myTable");
+  document.body.appendChild(table);
+
+  var tr = document.createElement("tr");
+  tr.setAttribute("id", "myTr");
+  document.getElementById("myTable").appendChild(tr);
+
+  var td = document.createElement("td");
+  var cel = document.createTextNode("cell");
+  td.appendChild(cel);
+  document.getElementById("myTr").appendChild(td);
+}
   
-      var header = document.createElement('h2')
-      header.textContent = this.locationName;
-      document.body.appendChild(header);
-      var unorderedList = document.createElement('ul')
-      for(var i = 0; i < hours.length; i++){
-        var listItem = document.createElement('li');
-        listItem.textContent = hours[i] + ': ' + this.cookiesEachHour[i];
-        unorderedList.appendChild(listItem);
-      }
-      var total = document.createElement('li');
-      total.textContent = 'Total: ' + this.totalDailyCookies;
-      unorderedList.appendChild(total);
-      document.body.appendChild(unorderedList);
-    }
+      // var header = document.createElement('h2')
+      // header.textContent = this.locationName;
+      // document.body.appendChild(header);
+      // var unorderedList = document.createElement('ul')
+      // for(var i = 0; i < hours.length; i++){
+      //   var listItem = document.createElement('li');
+      //   listItem.textContent = hours[i] + ': ' + this.cookiesEachHour[i];
+      //   unorderedList.appendChild(listItem);
+      // }
+      // var total = document.createElement('li');
+      // total.textContent = 'Total: ' + this.totalDailyCookies;
+      // unorderedList.appendChild(total);
+      // document.body.appendChild(unorderedList);
+    
+
     var PikePlaceMarket = new pikePlace('Pike Place Market', 23, 65, 6.3)
-        PikePlaceMarket.render();
-
-// var pikePlace = {
-//   locationName: 'Pike Place Market',
-//   minCustomersPerHour: 23,
-//   maxCustomersPerHour: 65,
-//   avgCookiesPerSale: 6.3,
-//   customersEachHour: [],
-//   cookiesEachHour: [],
-//   totalDailyCookies: 0,
-//   calcCustomersEachHour: function() {
-//    for(var i = 0; i < hours.length; i++) {
-//     this.customersEachHour.push(Math.floor(Math.random() * (this.maxCustomersPerHour - this.minCustomersPerHour + 1) + this.minCustomersPerHour));
-//    }
-//   },
-                                   
-  
-//   calcCookiesEachHour: function() 
-//   {
-//     for(var i = 0; i < this.customersEachHour.length; i++) {
-//       this.cookiesEachHour.push(Math.ceil(this.customersEachHour[i] * this.avgCookiesPerSale));
-//     }
-//   },
-//   calcTotalCookies: function() {
-//     for(var i = 0; i < this.cookiesEachHour.length; i++){
-//       this.totalDailyCookies += this.cookiesEachHour[i];
-//              }
-//   },
-//   render: function() { 
-//     this.calcCustomersEachHour();
-//     this.calcCookiesEachHour();
-//     this.calcTotalCookies();
-
-//     var header = document.createElement('h2')
-//     header.textContent = this.locationName;
-//     document.body.appendChild(header);
-//     var unorderedList = document.createElement('ul')
-//     for(var i = 0; i < hours.length; i++){
-//       var listItem = document.createElement('li');
-//       listItem.textContent = hours[i] + ': ' + this.cookiesEachHour[i];
-//       unorderedList.appendChild(listItem);
-//     }
-//     var total = document.createElement('li');
-//     total.textContent = 'Total: ' + this.totalDailyCookies;
-//     unorderedList.appendChild(total);
-//     document.body.appendChild(unorderedList);
-//   }
-// }
-
-
-
-
-
-
-
-
-
+    PikePlaceMarket.render();
