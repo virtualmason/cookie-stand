@@ -34,27 +34,35 @@ pikePlace.prototype.calcTotalCookies = function() {
       
     }
 
+    pikePlace.prototype.table = function() {
+      var table = document.createElement("table");
+      table.setAttribute("id", "myTable");
+      document.body.appendChild(table);
+
+      var tr = document.createElement("tr");
+      tr.setAttribute("id", "myTr");
+
+      var th = document.createElement("th");
+      th.setAttribute('id', 'myTh');
+
+      document.getElementById("myTable").appendChild(tr);
+    
+      document.getElementById("myTr").appendChild(th);
+      var thText = document.createTextNode("myTh");
+      document.getElementById("myTh").appendChild(thText);
+      document.getElementById("myTable").appendChild(tr);
+      var td = document.createElement("td");
+      var cel = document.createTextNode("cell");
+      td.appendChild(cel);
+      document.getElementById("myTr").appendChild(td);
+    }
+
  pikePlace.prototype.render = function() { 
       this.calcCustomersEachHour();
       this.calcCookiesEachHour();
       this.calcTotalCookies();
-       
-      var table = document.createElement('table');
-      var tr = document.createElement('tr');
-      var th = document.createElement('th')
-      ////////////
-   var table = document.createElement("table");
-  table.setAttribute("id", "myTable");
-  document.body.appendChild(table);
-
-  var tr = document.createElement("tr");
-  tr.setAttribute("id", "myTr");
-  document.getElementById("myTable").appendChild(tr);
-
-  var td = document.createElement("td");
-  var cel = document.createTextNode("cell");
-  td.appendChild(cel);
-  document.getElementById("myTr").appendChild(td);
+      this.table(); 
+      
 }
   
       // var header = document.createElement('h2')
