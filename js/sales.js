@@ -5,7 +5,7 @@ var trHeader = document.createElement('tr');
 // Left Corner table cell needs to be blank
 var blank = document.createElement('th');
 trHeader.appendChild(blank);
-
+//notice we append a table header to a table header
 for (var i = 0; i < hours.length; i++) {
   var listItem = document.createElement('th');
   listItem.textContent = hours[i];
@@ -48,20 +48,21 @@ CookieStore.prototype.render = function () {
   this.calcCookiesEachHour();
   this.calcTotalCookies();
 
+  //this will add the second row which starts with a header
   var tr = document.createElement('tr');
   var th = document.createElement('th');
   th.textContent = this.locationName;
   tr.appendChild(th);
 
+  //we already have a row with one header so attach TD to row
   for (var i = 0; i < this.cookiesEachHour.length; i++) {
     var td = document.createElement('td');
     td.textContent = this.cookiesEachHour[i];
     tr.appendChild(td);
   }
-
+// add what we just created to table
   table.appendChild(tr);
 }
-
 
 var PikePlace = new CookieStore('Pike Place Market', 23, 65, 6.3);
 var SeaTacInternationalAiport = new CookieStore('SeaTac International Aiport', 23, 65, 6.3);
