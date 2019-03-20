@@ -1,7 +1,7 @@
 var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 var table = document.createElement('table');
 var trHeader = document.createElement('tr');
-
+// trHeader is a row
 // Left Corner table cell needs to be blank
 var blank = document.createElement('th');
 trHeader.appendChild(blank);
@@ -41,7 +41,10 @@ CookieStore.prototype.calcTotalCookies = function () {
   for (var i = 0; i < this.cookiesEachHour.length; i++) {
     this.totalDailyCookies += this.cookiesEachHour[i];
   }
+  this.cookiesEachHour.push(this.totalDailyCookies)
+
 }
+
 
 CookieStore.prototype.render = function () {
   this.calcCustomersEachHour();
