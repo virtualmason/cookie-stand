@@ -3,13 +3,19 @@ var table = document.createElement('table');
 var trHeader = document.createElement('tr');
 var totalHeader = document.createElement('th');
 totalHeader.textContent = 'Totals';
+var loc ='location';
+var min = 0;
+var max = 0; 
+var avg = 0;
 var colSum = 0;
+var NewLocation;
+var storeList = [];
+
 // trHeader is a row
 // Left Corner table cell needs to be blank
 var blank = document.createElement('th');
 trHeader.appendChild(blank);
 //notice we append a table header to a table header
-
 
 for (var i = 0; i < hours.length; i++) {
   var listItem = document.createElement('th');
@@ -20,17 +26,16 @@ for (var i = 0; i < hours.length; i++) {
 
 table.appendChild(trHeader);
 document.body.appendChild(table);
-
-function CookieStore(locationName, minCustomersPerHour, maxCustomersPerHour, avgCookiesPerSale) {
-    this.locationName = locationName;
-    this.minCustomersPerHour = minCustomersPerHour;
-    this.maxCustomersPerHour = maxCustomersPerHour;
-    this.avgCookiesPerSale = avgCookiesPerSale;
+// constructor works
+function CookieStore(loc, min, max, avg) {
+    this.locationName = loc;
+    this.minCustomersPerHour = min;
+    this.maxCustomersPerHour = max;
+    this.avgCookiesPerSale = avg;
     this.customersEachHour = [];
     this.cookiesEachHour = [];
     this.totalDailyCookies = 0;
 }
-
 
 
 CookieStore.prototype.calcCustomersEachHour = function () {
@@ -77,19 +82,23 @@ CookieStore.prototype.render = function () {
   ////add totals of columns
 }
 ///total if added here goes tot top
-var PikePlace = new CookieStore('Pike Place Market', 23, 65, 6.3);
-var SeaTacInternationalAiport = new CookieStore('SeaTac International Aiport', 23, 65, 6.3);
-var SeattleCenter = new CookieStore('Seattle Center', 23, 65, 6.3);
-var FloydsCookieStand = new CookieStore('Floyds Cookie Stand', 23, 65, 6.3);
-var storeList = [PikePlace, SeaTacInternationalAiport, SeattleCenter, FloydsCookieStand];
+
+//  NewLocation = new CookieStore(loc, +min, +max, +avg);
+// var PikePlace = new CookieStore('Pike Place Market', 23, 65, 6.3);
+// var SeaTacInternationalAiport = new CookieStore('SeaTac International Aiport', 23, 65, 6.3);
+// var SeattleCenter = new CookieStore('Seattle Center', 23, 65, 6.3);
+// var FloydsCookieStand = new CookieStore('Floyds Cookie Stand', 23, 65, 6.3);
+// var storeList = [PikePlace, SeaTacInternationalAiport, SeattleCenter, FloydsCookieStand];
 
 var total ='blank';
-PikePlace.render();
-SeaTacInternationalAiport.render();
-SeattleCenter.render();
-FloydsCookieStand.render();
-
+NewLocation.render();
+// PikePlace.render();
+// SeaTacInternationalAiport.render();
+// SeattleCenter.render();
+// FloydsCookieStand.render();
+// floyd.render();
 ///add column totals
+//NewLocation.render();
 var tablerow = document.createElement('tr');
 var tableHeader = document.createElement('th');
 var tablerowtwo = document.createElement('tr');
@@ -102,8 +111,8 @@ tablerow.appendChild(tableHeader);
 for(var j = 0; j < hours.length; j++) {
   colSum = 0;
 
-  for(var i = 0; i < this.storeList.length; i++ ) {
-    console.log(storeList[i].cookiesEachHour[j], 'line 103' );
+  for(var i = 0; i < storeList.length; i++ ) {
+    //console.log(storeList[i].cookiesEachHour[j], 'line 103' );
     colSum += storeList[i].cookiesEachHour[j];
   }
   var tableDef = document.createElement('th');
@@ -113,11 +122,30 @@ for(var j = 0; j < hours.length; j++) {
   
 }
 
+var addNewLocation = document.getElementById('add-new-location')
+//works
+function handleForm(e) {
+  
+  e.preventDefault();
+
+  loc = e.target.loc.value;
+  min = e.target.min.value;
+  max = e.target.max.value; 
+  avg = e.target.avg.value;
+  loc;
+  ++min;
+  ++max;
+  ++avg
+  storeList.push(loc);
+  NewLocation = new CookieStore(loc, min, max, avg);
 
 
- 
+}
 
+addNewLocation.addEventListener('submit', handleForm);
+NewLocation.calcCustomersEachHour()
 
+console.log(storeList)
 
 
 
