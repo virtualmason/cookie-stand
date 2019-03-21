@@ -27,10 +27,10 @@ for (var i = 0; i < hours.length; i++) {
 table.appendChild(trHeader);
 document.body.appendChild(table);
 // constructor works
-function CookieStore(loc, min, max, avg) {
-    this.locationName = loc;
-    this.minCustomersPerHour = min;
-    this.maxCustomersPerHour = max;
+function CookieStore(locationName, minCustomersPerHour, maxCustomersPerHour, avgCookiesPerSale) {
+    this.locationName = locationName;
+    this.minCustomersPerHour = minCustomersPerHour;
+    this.maxCustomersPerHour = maxCustomersPerHour;
     this.avgCookiesPerSale = avg;
     this.customersEachHour = [];
     this.cookiesEachHour = [];
@@ -91,38 +91,16 @@ CookieStore.prototype.render = function () {
 // var storeList = [PikePlace, SeaTacInternationalAiport, SeattleCenter, FloydsCookieStand];
 
 var total ='blank';
-NewLocation.render();
+// NewLocation.render();
 // PikePlace.render();
 // SeaTacInternationalAiport.render();
 // SeattleCenter.render();
 // FloydsCookieStand.render();
 // floyd.render();
 ///add column totals
-//NewLocation.render();
-var tablerow = document.createElement('tr');
-var tableHeader = document.createElement('th');
-var tablerowtwo = document.createElement('tr');
 
 
-tableHeader.textContent = 'total';
-//Pikeplace
 
-tablerow.appendChild(tableHeader);
-for(var j = 0; j < hours.length; j++) {
-  colSum = 0;
-
-  for(var i = 0; i < storeList.length; i++ ) {
-    //console.log(storeList[i].cookiesEachHour[j], 'line 103' );
-    colSum += storeList[i].cookiesEachHour[j];
-  }
-  var tableDef = document.createElement('th');
-  tableDef.textContent = colSum;
-  tablerow.appendChild(tableDef);
-  table.appendChild(tablerow);
-  
-}
-
-var addNewLocation = document.getElementById('add-new-location')
 //works
 function handleForm(e) {
   
@@ -132,20 +110,47 @@ function handleForm(e) {
   min = e.target.min.value;
   max = e.target.max.value; 
   avg = e.target.avg.value;
-  loc;
   ++min;
   ++max;
   ++avg
-  storeList.push(loc);
   NewLocation = new CookieStore(loc, min, max, avg);
+  storeList.push(NewLocation);
+
+var tablerow = document.createElement('tr');
+var tableHeader = document.createElement('th');
+
+var list = document.getElementsByTagName("table")[0];
+if(list.childNodes.length > 1) {
+  list.removeChild(list.childNodes[list.childNodes.length -1]);
 
 
 }
+NewLocation.render();
 
+tableHeader.textContent = 'total';
+tablerow.appendChild(tableHeader);
+tablerow.appendChild(tableHeader);
+
+for(var j = 0; j < hours.length; j++) {
+  colSum = 0;
+  
+  for(var i = 0; i < storeList.length; i++ ) {
+    colSum += storeList[i].cookiesEachHour[j];
+
+  }
+  var tableDef = document.createElement('th');
+  tableDef.textContent = colSum;
+  tablerow.appendChild(tableDef);
+  
+  
+  table.appendChild(tablerow);
+}
+
+}
+
+var addNewLocation = document.getElementById('add-new-location')
 addNewLocation.addEventListener('submit', handleForm);
-NewLocation.calcCustomersEachHour()
-
-console.log(storeList)
+console.log(NewLocation, 'NewLocation')
 
 
 
