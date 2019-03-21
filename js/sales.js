@@ -3,7 +3,7 @@ var table = document.createElement('table');
 var trHeader = document.createElement('tr');
 var totalHeader = document.createElement('th');
 totalHeader.textContent = 'Totals';
-
+var colSum = 0;
 // trHeader is a row
 // Left Corner table cell needs to be blank
 var blank = document.createElement('th');
@@ -81,39 +81,43 @@ var PikePlace = new CookieStore('Pike Place Market', 23, 65, 6.3);
 var SeaTacInternationalAiport = new CookieStore('SeaTac International Aiport', 23, 65, 6.3);
 var SeattleCenter = new CookieStore('Seattle Center', 23, 65, 6.3);
 var FloydsCookieStand = new CookieStore('Floyds Cookie Stand', 23, 65, 6.3);
+var storeList = [PikePlace, SeaTacInternationalAiport, SeattleCenter, FloydsCookieStand];
 
+var total ='blank';
 PikePlace.render();
 SeaTacInternationalAiport.render();
 SeattleCenter.render();
 FloydsCookieStand.render();
 
 ///add column totals
-var tr = document.createElement('tr');
-var th = document.createElement('th');
-var trHeader = document.createElement('tr');
-var td = document.createElement('td');
-td.textContent ='sum'
-tr.appendChild(th);
-th.textContent = 'total';
-//this needs to be in a loop
-// for (var i = 0; i < this.cookiesEachHour.length; i++) {
-//   var td = document.createElement('td');
-//   td.textContent = this.cookiesEachHour[i];
-//   trHeader.append(th)
-// }
- trHeader.append(th)
+var tablerow = document.createElement('tr');
+var tableHeader = document.createElement('th');
+var tablerowtwo = document.createElement('tr');
 
- //this below is sum of columns
- trHeader.append(td)
-//add dt
-// for (var i = 0; i < this.cookiesEachHour.length; i++) {
-//   var td = document.createElement('td');
-//   td.textContent = this.cookiesEachHour[i];
-//   tr.appendChild(td);
-// }
 
+tableHeader.textContent = 'total';
+//Pikeplace
+
+tablerow.appendChild(tableHeader);
+for(var j = 0; j < hours.length; j++) {
+  colSum = 0;
+
+  for(var i = 0; i < this.storeList.length; i++ ) {
+    console.log(storeList[i].cookiesEachHour[j], 'line 103' );
+    colSum += storeList[i].cookiesEachHour[j];
+  }
+  var tableDef = document.createElement('th');
+  tableDef.textContent = colSum;
+  tablerow.appendChild(tableDef);
+  table.appendChild(tablerow);
+  
+}
 
 
 
-table.appendChild(trHeader);
-document.body.appendChild(table);
+ 
+
+
+
+
+
