@@ -122,8 +122,6 @@ var tableHeader = document.createElement('th');
 var list = document.getElementsByTagName("table")[0];
 if(list.childNodes.length > 1) {
   list.removeChild(list.childNodes[list.childNodes.length -1]);
-
-
 }
 NewLocation.render();
 
