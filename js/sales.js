@@ -120,6 +120,8 @@ var tablerow = document.createElement('tr');
 var tableHeader = document.createElement('th');
 
 var list = document.getElementsByTagName("table")[0];
+console.log(list ,'list')
+console.log(list.childNodes, 'childNodes')
 if(list.childNodes.length > 1) {
   list.removeChild(list.childNodes[list.childNodes.length -1]);
 }
