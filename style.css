@@ -68,11 +68,12 @@ form {
 .center {
   text-align: center;
 }
- button {
+ .sales-button {
    position: absolute;
-   bottom: 23%;
+   bottom: 18%;
    left:15px;
  }
+
 
 fieldset {
   padding: 20px;
@@ -164,6 +165,10 @@ table th {
   left:0;
   min-height: 5%;
   margin-top: 5%;
+}
+.button-contact {
+  margin-top : 5%;
+   
 }
 .footer :before {
   margin-top: 200px;
