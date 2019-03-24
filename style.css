@@ -1,32 +1,15 @@
+/* All PAges */
+.logo {
+  display: flex;
+  justify-content: center;
+}
+
+/* Index Page */
 html {
   scroll-behavior: smooth;    
 }
 body {
   box-sizing: border-box;
-
-}
-.grey-paragraph--bg{
- 
-  max-width: 62%;
-  background: lightgrey;
-}
-
-.salmon {
-  color : rgb(140,66,42);
- 
-}
-
-.margin-top {
-  margin-top : 10px;
-}
-
-.white {
-  color: white;
-}
-
-.float {
-  float: left;
-  width: 20%;
 }
 .home {
   color: white;
@@ -39,13 +22,99 @@ body {
   margin-bottom: -200px;
   
 }
-
-footer {
-  min-height: 100%;
-  background: black;
+nav {
   color: white;
+  text-align: center;
+  position: relative;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
 
 }
+
+footer {
+  min-height: 10%;
+  width : 100%;
+  background: black;
+  color: white;
+}
+
+.float-right {
+  float: right;
+}
+
+/* .margin-top {
+  margin-top : 10px;
+}  */
+
+
+
+/* About & Contact Page */
+/* contact footer */
+.footer-bottom{
+  position: absolute;
+  bottom:0;
+  left:0;
+  min-height: 5%;
+}
+
+/* NavBar */
+.active  {
+  font-weight: bold;
+  color: black;
+  text-decoration: underline;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+ 
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #111;
+}
+
+/* End OF Nav Bar */
+.grey-paragraph--bg{
+  max-width: 62%;
+  background: lightgrey;
+}
+
+.salmon {
+  /* #8C422A */
+  color : rgb(140,66,42);
+ 
+}
+
+.white {
+  color: white;
+}
+
+.float {
+  float: left;
+  width: 20%;
+}
+
+
+
+
+
 
 .grid{
   display: grid;
@@ -108,16 +177,7 @@ html {
   color: white;
 }
 
-nav {
-  color: white;
-  text-align: center;
-  position: relative;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
-
-}/* 1 */
+/* 1 */
 /* .hero {
   background: url('img/salmon.png') no-repeat center center fixed; 
   -webkit-background-size: cover;
