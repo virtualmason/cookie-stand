@@ -83,25 +83,9 @@ CookieStore.prototype.render = function () {
 }
 ///total if added here goes tot top
 
-//  NewLocation = new CookieStore(loc, +min, +max, +avg);
-// var PikePlace = new CookieStore('Pike Place Market', 23, 65, 6.3);
-// var SeaTacInternationalAiport = new CookieStore('SeaTac International Aiport', 23, 65, 6.3);
-// var SeattleCenter = new CookieStore('Seattle Center', 23, 65, 6.3);
-// var FloydsCookieStand = new CookieStore('Floyds Cookie Stand', 23, 65, 6.3);
-// var storeList = [PikePlace, SeaTacInternationalAiport, SeattleCenter, FloydsCookieStand];
 
 var total ='blank';
-// NewLocation.render();
-// PikePlace.render();
-// SeaTacInternationalAiport.render();
-// SeattleCenter.render();
-// FloydsCookieStand.render();
-// floyd.render();
-///add column totals
 
-
-
-//works
 function handleForm(e) {
   
   e.preventDefault();
