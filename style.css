@@ -147,7 +147,7 @@ table th {
 
 /* contact footer */
 .footer-bottom {
-  position: absolute;
+  position: fixed;
   bottom:0;
   left:0;
   min-height: 5%;
