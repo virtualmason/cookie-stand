@@ -117,7 +117,8 @@ tablerow.appendChild(tableHeader);
 
 for(var j = 0; j < hours.length; j++) {
   colSum = 0;
-  
+  document.getElementById("add-new-location").reset();
+
   for(var i = 0; i < storeList.length; i++ ) {
     colSum += storeList[i].cookiesEachHour[j];
 
